@@ -1,0 +1,46 @@
+
+.profile-container {
+    background-color:#e3e9cf;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center;
+  }
+  .header{
+    display: flex;
+    justify-content: center;
+  }
+  .header button .bt1{
+    margin :10px 90px;
+  }
+  .profile-img{
+    height:60px;
+    width:60px;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  button{
+    margin: 10px;
+  }
+  .footer {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;/* Center the container horizontally */
+    text-align: center;
+  }
+  .footer-icon{
+    width:60px;
+    height:60px;
+  }

@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import{ createContext, useContext, useState} from 'react';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignInPage from './components/SignInPage';
+import HomePage from './components/HomePage';
+import ProfilePage from './components/ProfilePage';
+import ProtectedRoute from './components/ProtectedRoute';
+// import BookHubThemeContext from './context/BookHubThemeContext'
+
+
+const UserContext = createContext()
 function App() {
+  const [theme,setTheme] = useState(false)
+  const toggleTheme = ()=>{
+    setTheme((prev)=>!prev)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value = {{theme,toggleTheme}}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SignInPage />} />
+          <Route
+            path="/home"
+            element={<ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>} />
+          <Route
+            path="/profile"
+            element={<ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>} />
+        </Routes>
+      </Router>
+    </UserContext.Provider>
+
   );
 }
 
+
 export default App;
+export { UserContext };
+
